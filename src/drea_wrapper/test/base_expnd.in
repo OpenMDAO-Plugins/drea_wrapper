@@ -1,0 +1,10 @@
+
+&exd
+  rm1s = 1.8
+  rm2s = 0.8
+  dxe = 0.1
+  relx = 1.0
+  errm = 1e-06
+  nmx = 500
+  intt = 100
+/

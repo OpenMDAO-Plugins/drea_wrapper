@@ -1,0 +1,4 @@
+graft src/drea_wrapper/sphinx_build/html
+recursive-include src/drea_wrapper/test *.py
+recursive-include src/drea_wrapper/test *.in
+
