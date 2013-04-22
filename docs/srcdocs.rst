@@ -5,7 +5,7 @@
 ====================
 Source Documentation
 ====================
-        
+
         
 .. index:: DREA.py
 
@@ -18,7 +18,7 @@ DREA.py
    :members:
    :undoc-members:
    :show-inheritance:
-    
+
         
 .. index:: MEflows.py
 
@@ -31,7 +31,7 @@ MEflows.py
    :members:
    :undoc-members:
    :show-inheritance:
-    
+
         
 .. index:: geometry.py
 
@@ -44,7 +44,7 @@ geometry.py
    :members:
    :undoc-members:
    :show-inheritance:
-    
+
         
 .. index:: stream.py
 
@@ -57,5 +57,5 @@ stream.py
    :members:
    :undoc-members:
    :show-inheritance:
-    
+
         

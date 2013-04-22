@@ -16,12 +16,12 @@ Package Metadata
 
 - **entry_points**:: 
 
+    [openmdao.component]
+    drea_wrapper.DREA.DREA=drea_wrapper.DREA:DREA
     [openmdao.container]
     drea_wrapper.geometry.Geometry=drea_wrapper.geometry:Geometry
     drea_wrapper.stream.Stream=drea_wrapper.stream:Stream
     drea_wrapper.MEflows.MEflows=drea_wrapper.MEflows:MEflows
-    drea_wrapper.DREA.DREA=drea_wrapper.DREA:DREA
-    [openmdao.component]
     drea_wrapper.DREA.DREA=drea_wrapper.DREA:DREA
 
 - **home-page:** https://github.com/OpenMDAO-Plugins/drea_wrapper
@@ -47,5 +47,5 @@ Package Metadata
 
 - **summary:** OpenMDAO component wrapper for DREA
 
-- **version:** 0.1
+- **version:** 0.2
 
