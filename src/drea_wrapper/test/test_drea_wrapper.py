@@ -12,7 +12,6 @@ class Drea_wrapperTestCase(unittest.TestCase):
     def setUp(self):
         pass
     
-        
     def tearDown(self):
         for filename in ['ejectd.out', 'drea.dump', 'control.in',
                          'flocond.in', 'expnd.in', 'zrdmix.in',
@@ -43,13 +42,21 @@ class Drea_wrapperTestCase(unittest.TestCase):
             comp.generate_input('Subsonic')
     
             for item in ['control', 'flocond', 'expnd', 'zrdmix', 'hwall']:
-                file1 = open('base_%s.in' % item, 'r')
-                result1 = file1.read()
-                file1.close()
-                file2 = open('%s.in' % item, 'r')
-                result2 = file2.read()
-                file2.close()
+                infile_name = 'base_%s.in' % item
+                with open(infile_name, 'r') as inp:
+                    result1 = inp.read()
+                with open('%s.in' % item, 'r') as inp:
+                    result2 = inp.read()
                 
+                lnum = 1
+                for line1, line2 in zip(result1, result2):
+                    try:
+                        self.assertEqual(line1, line2)
+                    except AssertionError as err:
+                        raise AssertionError("line %d doesn't match file %s: %s"
+                                             % (lnum, infile_name, err))
+                    lnum += 1
+
                 self.assertEqual(result1, result2)
             
             # Check output file parsing
@@ -57,21 +64,24 @@ class Drea_wrapperTestCase(unittest.TestCase):
             shutil.copyfile('base_ejectd.out', 'ejectd.out')
             comp.parse_output('Subsonic')
             
-            file1 = open('drea.dump', 'w')
-            dump(comp, stream=file1, recurse=True)
-            file1.close()
+            with open('drea.dump', 'w') as out:
+                dump(comp, stream=out, recurse=True)
             
-            file1 = open('base_drea.dump', 'r')
-            result1 = file1.readlines()
-            file1.close()
-            file2 = open('drea.dump', 'r')
-            result2 = file2.readlines()
-            file2.close()
+            with open('base_drea.dump', 'r') as inp:
+                result1 = inp.readlines()
+            with open('drea.dump', 'r') as inp:
+                result2 = inp.readlines()
             
+            lnum = 1
             for line1, line2 in zip(result1, result2):
                 # Omit lines with objects, because memory location differs
                 if 'object at' not in line1:
-                    self.assertEqual(line1, line2)
+                    try:
+                        self.assertEqual(line1, line2)
+                    except AssertionError as err:
+                        raise AssertionError("line %d doesn't match file %s: %s"
+                                             % (lnum, 'base_drea.dump', err))
+                    lnum += 1
 
         finally:
             os.chdir(basename)
