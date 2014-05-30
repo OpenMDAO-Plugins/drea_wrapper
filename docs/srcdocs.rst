@@ -59,3 +59,16 @@ stream.py
    :show-inheritance:
 
         
+.. index:: test_drea_wrapper.py
+
+.. _drea_wrapper.test.test_drea_wrapper.py:
+
+test_drea_wrapper.py
+--------------------
+
+.. automodule:: drea_wrapper.test.test_drea_wrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+        
