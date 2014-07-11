@@ -47,5 +47,5 @@ Package Metadata
 
 - **summary:** OpenMDAO component wrapper for DREA
 
-- **version:** 0.2
+- **version:** 0.2.1
 
